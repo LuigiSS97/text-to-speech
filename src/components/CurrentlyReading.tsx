@@ -1,8 +1,10 @@
-// Implement a component that displays the currently read word and sentence 
-export const CurrentlyReading = ({}) => {
-  return (
-    <div className="currently-reading">
+// Implement a component that displays the currently read word and sentence
+interface CurrentlyReadingProps {
+  currentSentence: string;
+}
 
-    </div>
-  );
+export const CurrentlyReading = ({
+  currentSentence,
+}: CurrentlyReadingProps) => {
+  return <div className="currently-reading">{currentSentence}</div>;
 };

@@ -1,4 +1,10 @@
+import { useState } from "react";
+import { PlayingState, createSpeechEngine } from "./speech";
+
 const useSpeech = (sentences: Array<string>) => {
+  const [setspeechStatus, setSpeechStatus] = useState<PlayingState>("ended");
+  // const {play} = createSpeechEngine({onStateUpdate: setSpeechStatus})
+
   /*
   Implement a custom useSpeech hook that uses a speech engine defined in 'speech.ts'
   to play the sentences that have been fetched and parsed previously.
@@ -6,6 +12,7 @@ const useSpeech = (sentences: Array<string>) => {
   This hook should return react friendly controls for playing, and pausing audio as well as provide information about
   the currently read word and sentence
   */
+  const play = () => {};
 };
 
 export { useSpeech };
