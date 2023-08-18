@@ -1,33 +1,40 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-
-import { Controls } from "./components/Controls";
-import { CurrentlyReading } from "./components/CurrentlyReading";
 import { fetchContent, parseContentIntoSentences } from "./lib/content";
+import { useSpeech } from "./lib/useSpeech";
+import SpeechRender from "./components/reading";
 
 function App() {
   const [sentences, setSentences] = useState<Array<string>>([]);
-  // const { currentWord, currentSentence, controls } = useSpeech(sentences);
+  const { currentWord, isPlaying, currentSentence, controls } =
+    useSpeech(sentences);
 
   useEffect(() => {
-    const fetchData = async () => {
-      await fetchContent();
+    const getSentences = async () => {
+      const response = await fetchContent();
+
+      const parsedResponse = parseContentIntoSentences(response.toString());
+      setSentences(parsedResponse);
     };
-    const response = fetchData();
-    const parsedResponse = parseContentIntoSentences(response.toString());
-    setSentences(parsedResponse);
+    getSentences();
   }, []);
 
   return (
-    <div className="App">
+    <section className="App">
       <h1>Text to speech</h1>
-      <div>
-        <CurrentlyReading currentSentence={"This is a sentence"} />
-      </div>
-      <div>
-        <Controls utterance={""} />
-      </div>
-    </div>
+
+      <SpeechRender.root>
+        <SpeechRender.currentRead
+          currentSentence={currentSentence}
+          currentWord={currentWord}
+        />
+        <SpeechRender.sentences
+          currentWord={currentWord}
+          sentences={sentences}
+        />
+        <SpeechRender.controls controls={controls} isPlaying={isPlaying} />
+      </SpeechRender.root>
+    </section>
   );
 }
 

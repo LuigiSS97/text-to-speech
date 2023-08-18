@@ -1,12 +1,39 @@
-.currently-reading { 
-
+.App {
+  text-align: center;
+  padding: 1em;
 }
 
-.currently-reading .currently-reading-text { 
-    font-size: 24px;
+.reading-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
 }
 
-.currently-reading .currently-reading-text .currentword { 
-    font-size: 24px;
-    color: red;
+.reading-controls {
+  display: flex;
+  gap: 2em;
+}
+
+.reading-controls {
+  display: flex;
+  gap: 2em;
+}
+
+.reading-controls button {
+  background-color: #75a99c;
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: 1em;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.reading-controls button:hover {
+  transition: ease-in-out;
+  opacity: 0.5;
+}
+
+.reading-controls .cancel {
+  background-color: #b30000;
 }

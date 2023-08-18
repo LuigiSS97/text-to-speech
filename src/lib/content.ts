@@ -1,24 +1,35 @@
 const API_URL = "http://localhost:5174/content";
 
-/**
- * Fetch the content from the api
- */
 const fetchContent = async () => {
-  const response = await fetch(API_URL).then((response) => response.json());
-
-  return response.content;
+  try {
+    const response = await fetch(API_URL).then((response) => response.json());
+    return response.content;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-/**
- * Parse the content into sentences, and return an array of sentences. Look at the Readme for sample input and expected output.
- * Avoid using DOMParser for implementing this function.
- */
 const parseContentIntoSentences = (content: string) => {
-  var text = [];
-  const markupRemovedText = content.replace(/(<([^>]+)>)/gi, "");
-  text = markupRemovedText.split(".");
+  const openingTag = "<s>";
+  const closingTag = "</s>";
+  const sentences: string[] = [];
 
-  return text;
+  let startIndex = content.indexOf(openingTag);
+  while (startIndex !== -1) {
+    const endIndex = content.indexOf(closingTag, startIndex);
+    if (endIndex !== -1) {
+      const sentence = content.substring(
+        startIndex + openingTag.length,
+        endIndex
+      );
+      sentences.push(sentence);
+      startIndex = content.indexOf(openingTag, endIndex + closingTag.length);
+    } else {
+      break;
+    }
+  }
+
+  return sentences;
 };
 
 export { fetchContent, parseContentIntoSentences };
