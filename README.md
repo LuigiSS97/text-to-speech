@@ -2,7 +2,7 @@
 
 # Message to the development team
 
-I personally took the decision to complete the task on my own to learn from the selection process. The components were developed and separated based on the composition pattern, aiming to make it scalable and avoid excessive props to the child components. Also, I tought it was essential to improve the accessibility of it, spacially because it's a application that might be used by disabled people, so I changed some HTML tags. Also, concerning the styling part, even though it's a simple application, it was developed to be completely responsive.
+I personally took the decision to complete the task on my own to learn from the selection process. The components were developed and separated based on the composition pattern, aiming to make it scalable and avoid excessive props to the child components. Also, I thought it was essential to improve the accessibility of it, spacially because it's an application that might be used by disabled people, so I changed some HTML tags. Also, concerning the styling part, even though it's a simple application, it was developed to be completely responsive.
 
 One thing that I mostly evaluate is documentation, so I also complemented this README by adding some extra clarifications.
 
